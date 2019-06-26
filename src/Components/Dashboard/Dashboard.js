@@ -39,16 +39,25 @@ export class Dashboard extends Component {
           </Col>
           <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card title="Card title">
+              <div className="card-content card-list-content">
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+        <Row align="bottom">
+          <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Card title="Card title">
               <div className="card-content">
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
+                <p className="alert-text">Ok</p>
               </div>
             </Card>
           </Col>

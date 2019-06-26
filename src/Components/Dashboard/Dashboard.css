@@ -1,7 +1,13 @@
 .dashboard .column{
     padding: 0px 15px;
+    margin-bottom: 30px;
 }
 .dashboard .card-content{
     height: 130px;
     overflow-y: auto;
+}
+.dashboard .alert-text{
+    font-size: 50px;
+    font-weight: 600;
+    color: #e83636;
 }
