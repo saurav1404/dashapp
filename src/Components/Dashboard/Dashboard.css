@@ -1,0 +1,7 @@
+.dashboard .column{
+    padding: 0px 15px;
+}
+.dashboard .card-content{
+    height: 130px;
+    overflow-y: auto;
+}

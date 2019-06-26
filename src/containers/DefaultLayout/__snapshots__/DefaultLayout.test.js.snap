@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultLayout test cases should render correctly 1`] = `
+<div
+  className="app"
+>
+  <DefaultHeader />
+  <Switch>
+    <Redirect
+      key="0"
+      push={false}
+      to={
+        Object {
+          "pathname": "/login",
+        }
+      }
+    />
+    <Route
+      exact={true}
+      key="1"
+      name="Settings"
+      path="/settings"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="2"
+      name="Overview"
+      path="/overview"
+      render={[Function]}
+    />
+    <Route
+      key="3"
+      name="Profile"
+      path="/profile"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="4"
+      name="Jobs"
+      path="/jobs"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="5"
+      name="Jobs"
+      path="/jobs/:id"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="6"
+      name="Jobs"
+      path="/jobs/:id/:candidateId"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="7"
+      name="Offers"
+      path="/offers"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="8"
+      name="Applications"
+      path="/applications"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="9"
+      name="Interviews"
+      path="/interviews"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="10"
+      name="message"
+      path="/message"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="11"
+      name="message with id"
+      path="/message/:conversation_id/:message_id"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="12"
+      name="candidate"
+      path="/candidate/jobs"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="13"
+      name="candidateJobId"
+      path="/candidate/jobs/:id"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="14"
+      name="CandidateProfile"
+      path="/jobs/:id/candidate/:candidateId"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="15"
+      name="task"
+      path="/tasks"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      key="16"
+      name="task"
+      path="/tasks/:id"
+      render={[Function]}
+    />
+  </Switch>
+  <DefaultFooter />
+</div>
+`;
