@@ -24,11 +24,11 @@ export class Dashboard extends Component {
     const { gaugeEndpoint, stateEndPoint, textEndPoint } = this.state;
     let { stateText, textList } = this.state;
 
-    const socket = socketIOClient(gaugeEndpoint);
+    const energySocket = socketIOClient(gaugeEndpoint);
     const speechSocket = socketIOClient(textEndPoint);
     const stateSocket = socketIOClient(stateEndPoint);
 
-    socket.on("update", data => this.setState({ response: data }));
+    energySocket.on("update", data => this.setState({ response: data }));
     speechSocket.on("update", data => {
       textList.push(data);
       this.setState({textList});
@@ -51,7 +51,7 @@ export class Dashboard extends Component {
       <div className="container-fluid app-body dashboard">
         <Row>
           <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card title="Card title">
+            <Card title="Meeting Energy Level">
               <div className="card-content">
                 {response ? (
                   <Progress type="circle" percent={response} />
@@ -62,7 +62,7 @@ export class Dashboard extends Component {
             </Card>
           </Col>
           <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card title="Card title">
+            <Card title="Meeting updates">
               <div className="card-content card-list-content">
                 {
                   textList.map((text, key) => (
@@ -76,14 +76,14 @@ export class Dashboard extends Component {
         </Row>
         <Row align="bottom">
           <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card title="Card title">
+            <Card title="Guidance">
               <div className="card-content">
-                <p className="alert-text">{stateText || 'Ok'}</p>
+                <p className="alert-text">{stateText || '...'}</p>
               </div>
             </Card>
           </Col>
           <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card title="Card title">
+            <Card title="Summary">
               <div className="card-content">
                 
               </div>

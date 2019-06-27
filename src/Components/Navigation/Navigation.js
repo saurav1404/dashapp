@@ -51,7 +51,7 @@ export class Navigation extends React.Component {
             <span className="icon-bar"></span> 
           </div>
           <a className="navbar-brand" href="/">
-            Logo
+            Homer
           </a>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <Menu
@@ -64,16 +64,7 @@ export class Navigation extends React.Component {
                   <Icon type="dashboard" /><span>Dashboard</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="menu1">
-                <Link href="#" className="dropdown-item" to="/dashboard">
-                  <Icon type="dashboard" /><span>Menu 1</span>
-                </Link>
-              </Menu.Item>
-              <Menu.Item key="menu2">
-                <Link href="#" className="dropdown-item" to="/dashboard">
-                  <Icon type="dashboard" /><span>Menu 2</span>
-                </Link>
-              </Menu.Item>
+              
             </Menu>
           </div>
         </nav>

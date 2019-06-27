@@ -3,12 +3,15 @@
     margin-bottom: 30px;
 }
 .dashboard .card-content{
-    height: 130px;
+    height: 300px;
+    align-content: center;
     overflow-y: auto;
 }
 .dashboard .alert-text{
     font-size: 50px;
     font-weight: 600;
+    align-content: center;
+    text-align: center;
     color: #e83636;
 }
 .dashboard .speech-text{
