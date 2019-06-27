@@ -17,3 +17,6 @@
 .dashboard .speech-text{
     text-align: left;
 }
+.dashboard .vertically-centered{
+    padding: 70px 0;
+}

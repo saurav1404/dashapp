@@ -13,7 +13,7 @@ export class Dashboard extends Component {
     this.state = {
       response: false,
       textList: [],
-      stateText: '',
+      stateTextList: [],
       gaugeEndpoint: GaugeEndpoint,
       textEndPoint: TextEndPoint,
       stateEndPoint: StateEndPoint
@@ -22,7 +22,7 @@ export class Dashboard extends Component {
 
   componentDidMount() {
     const { gaugeEndpoint, stateEndPoint, textEndPoint } = this.state;
-    let { stateText, textList } = this.state;
+    let { stateTextList, textList } = this.state;
 
     const energySocket = socketIOClient(gaugeEndpoint);
     const speechSocket = socketIOClient(textEndPoint);
@@ -35,8 +35,9 @@ export class Dashboard extends Component {
       this.scrollToBottom();
     });
     stateSocket.on("update", data => {
-      stateText = data;
-      this.setState({stateText});
+      stateTextList.push(data);
+      this.setState({stateTextList});
+      this.scrollStateToBottom();
     });
   }
 
@@ -45,8 +46,13 @@ export class Dashboard extends Component {
     element.scrollIntoView({ behavior: "smooth" });
   }
 
+  scrollStateToBottom = () => {
+    var element = document.getElementById("bottom1");
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+
   render() {
-    const { response, textList, stateText } = this.state;
+    const { response, textList, stateTextList } = this.state;
     return (
       <div className="container-fluid app-body dashboard">
         <Row>
@@ -54,9 +60,9 @@ export class Dashboard extends Component {
             <Card title="Meeting Energy Level">
               <div className="card-content">
                 {response ? (
-                  <Progress type="circle" percent={response} />
+                  <Progress className="vertically-centered" type="circle" percent={response} />
                 ) : (
-                  <Progress type="circle" percent={0} />
+                  <Progress className="vertically-centered" type="circle" percent={0} />
                 )}
               </div>
             </Card>
@@ -78,7 +84,15 @@ export class Dashboard extends Component {
           <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card title="Guidance">
               <div className="card-content">
-                <p className="alert-text">{stateText || '...'}</p>
+                {stateTextList.length > 0 &&
+                  stateTextList.map((text, key) => (
+                    <p className="speech-text alert-text" key = {key}>{text}</p>
+                  ))
+                }
+                {stateTextList.length === 0 &&
+                  <p className="vertically-centered alert-text">...</p>
+                }
+                <div id="bottom1" />
               </div>
             </Card>
           </Col>

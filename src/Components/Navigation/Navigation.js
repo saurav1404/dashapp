@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { history } from '../../helpers';
 import { connect } from 'react-redux';
 import { Menu, Icon } from 'antd';
+import Logo from '../../assets/Homer.png'
+
 import './Navigation.css';
 
 /* eslint eqeqeq: 0 */
@@ -51,7 +53,7 @@ export class Navigation extends React.Component {
             <span className="icon-bar"></span> 
           </div>
           <a className="navbar-brand" href="/">
-            Homer
+            <img src={Logo}/>
           </a>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <Menu
