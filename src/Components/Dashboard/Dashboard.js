@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Col, Progress, Row } from 'antd';
+import { GaugeEndpoint, TextEndPoint, StateEndPoint} from '../../helpers';
 import socketIOClient from "socket.io-client";
 import './Dashboard.css';
 
@@ -12,25 +13,39 @@ export class Dashboard extends Component {
     this.state = {
       response: false,
       textList: [],
-      endpoint: "http://8e9f2298.ngrok.io",
-      textEndPoint: "http://2c53a468.ngrok.io"
+      stateText: '',
+      gaugeEndpoint: GaugeEndpoint,
+      textEndPoint: TextEndPoint,
+      stateEndPoint: StateEndPoint
     };
   }
 
   componentDidMount() {
-    const { textEndPoint } = this.state;
-    let { textList } = this.state;
-    // const socket = socketIOClient(endpoint);
-    // socket.on("update", data => this.setState({ response: data }));
-    const socket = socketIOClient(textEndPoint);
-    socket.on("update", data => {
+    const { gaugeEndpoint, stateEndPoint, textEndPoint } = this.state;
+    let { stateText, textList } = this.state;
+
+    const socket = socketIOClient(gaugeEndpoint);
+    const speechSocket = socketIOClient(textEndPoint);
+    const stateSocket = socketIOClient(stateEndPoint);
+
+    socket.on("update", data => this.setState({ response: data }));
+    speechSocket.on("update", data => {
       textList.push(data);
-      this.setState({textList})
+      this.setState({textList});
+      this.scrollToBottom();
+    });
+    stateSocket.on("update", data => {
+      stateText = data;
+      this.setState({stateText});
     });
   }
 
+  scrollToBottom = () => {
+    this.textEndRef.scrollIntoView({ behavior: "smooth" });
+  }
+
   render() {
-    const { response, textList } = this.state;
+    const { response, textList, stateText } = this.state;
     return (
       <div className="container-fluid app-body dashboard">
         <Row>
@@ -50,9 +65,10 @@ export class Dashboard extends Component {
               <div className="card-content card-list-content">
                 {
                   textList.map((text, key) => (
-                    <p key = {key}>{text}</p>
+                    <p className="speech-text" key = {key}>{text}</p>
                   ))
                 }
+                <div ref={this.textEndRef} />
               </div>
             </Card>
           </Col>
@@ -61,7 +77,14 @@ export class Dashboard extends Component {
           <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card title="Card title">
               <div className="card-content">
-                <p className="alert-text">Ok</p>
+                <p className="alert-text">{stateText || 'Ok'}</p>
+              </div>
+            </Card>
+          </Col>
+          <Col className="column" xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Card title="Card title">
+              <div className="card-content">
+                
               </div>
             </Card>
           </Col>
