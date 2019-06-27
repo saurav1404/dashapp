@@ -41,7 +41,8 @@ export class Dashboard extends Component {
   }
 
   scrollToBottom = () => {
-    this.textEndRef.scrollIntoView({ behavior: "smooth" });
+    var element = document.getElementById("bottom");
+    element.scrollIntoView({ behavior: "smooth" });
   }
 
   render() {
@@ -68,7 +69,7 @@ export class Dashboard extends Component {
                     <p className="speech-text" key = {key}>{text}</p>
                   ))
                 }
-                <div ref={this.textEndRef} />
+                <div id="bottom" />
               </div>
             </Card>
           </Col>
